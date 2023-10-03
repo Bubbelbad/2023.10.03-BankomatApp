@@ -1,0 +1,14 @@
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\bin\Debug\net6.0\KonsolAppInlämningBank.exe
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\bin\Debug\net6.0\KonsolAppInlämningBank.deps.json
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\bin\Debug\net6.0\KonsolAppInlämningBank.runtimeconfig.json
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\bin\Debug\net6.0\KonsolAppInlämningBank.dll
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\bin\Debug\net6.0\KonsolAppInlämningBank.pdb
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.AssemblyInfoInputs.cache
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.AssemblyInfo.cs
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.csproj.CoreCompileInputs.cache
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.dll
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\refint\KonsolAppInlämningBank.dll
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.pdb
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\KonsolAppInlämningBank.genruntimeconfig.cache
+C:\Users\SOS23\source\repos\KonsolAppInlämningBank\KonsolAppInlämningBank\obj\Debug\net6.0\ref\KonsolAppInlämningBank.dll
