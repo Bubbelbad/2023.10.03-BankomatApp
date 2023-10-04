@@ -60,85 +60,64 @@ namespace BankomatApplikation
             set { pinCode = value; }
         }
 
+
+
         //Variabler för funktioner: 
-
-        int thousand = 0;
-        int fivehundred = 0;
-        int twohundred = 0;
-        int hundred = 0;
-        int fifty = 0;
-        int twenny = 0;
-        int ten = 0;
-        int five = 0;
-        int one = 0;
-
-        int sum = 0;
+        int[] change = { 1000, 500, 200, 100, 50, 20, 10, 5, 1 };
 
 
         //Funktioner: 
-
-        public bool WithdrawCash(int withdraw)
+        public bool WithdrawCash()
         {
-            if (withdraw <= holdings)
+            int withdraw_sum = 0;
+            int sum = 0;
+            List<int> list = new List<int>() { 0, 0, 0, 0, 0, 0, 0, 0, 0, }; 
+            Console.Write("Hur mÿcket pengar vill du ta ut? ");
+
+            try
             {
-
-                holdings -= withdraw;
-                while (withdraw >= 1000)
+                withdraw_sum = Convert.ToInt32(Console.ReadLine());
+                sum = withdraw_sum;
+                Console.WriteLine("\n");
+            }
+            catch
+            {
+                Console.WriteLine("Skriv in ett belopp med siffror\n");
+            } 
+            
+            if (withdraw_sum <= holdings)
+            {
+                for (int i = 0; i < change.Length; i++)
                 {
-                    withdraw -= 1000; thousand++;
-                }
-                while (withdraw >= 500)
-                {
-                    withdraw -= 500; fivehundred++;
-                }
-                while (withdraw >= 200)
-                {
-                    withdraw -= 200; twohundred++;
-                }
-                while (withdraw >= 100)
-                {
-                    withdraw -= 100; hundred++;
-                }
-                while (withdraw >= 50)
-                {
-                    withdraw -= 50; fifty++;
-                }
-                while (withdraw >= 20)
-                {
-                    withdraw -= 20; twenny++;
-                }
-                while (withdraw >= 10)
-                {
-                    withdraw -= 10; ten++;
-                }
-                while (withdraw >= 5)
-                {
-                    withdraw -= 5; five++;
-                }
-                while (withdraw >= 1)
-                {
-                    withdraw -= 1; one++;
+                    while (change[i] <= sum)
+                    {
+                        sum -= change[i];
+                        list[i]++;
+                    }
                 }
 
-                Console.WriteLine($"Du får ut följande: \n" +
-                    $"1000-lappar: {thousand} \n" +
-                    $"500-lappar: {fivehundred}\n" +
-                    $"200-lappar: {twohundred}\n" +
-                    $"100-lappar: {hundred}\n" +
-                    $"50-lappar: {fifty}\n" +
-                    $"20-lappar: {twenny}\n" +
-                    $"10-kronor: {ten}\n" +
-                    $"5-kronor: {five}\n" +
-                    $"1-kronor: {one}\n\n" +
-                    $"Ditt nuvarande saldo är {holdings} SEK");
+                for (int i = 0; i < change.Length; i++)
+                {
+                    if (list[i] > 0)
+                    {
+                        Console.WriteLine($"Du får ut {list[i]} stycken av {change[i]}.");
+                    }
+                    else if (list[i] == 0)
+                    {
+                        continue;
+                    }
+                }
+                Console.WriteLine($"\nDitt nya saldo är nu {holdings - withdraw_sum} SEK.\n");
+                holdings -= withdraw_sum;
                 return true;
 
             }
-            else if (withdraw > holdings)   
+            else if (withdraw_sum > holdings)   
             {
                 Console.WriteLine($"*** Du har för lite pengar på kontot! ***\n");
                 return false;
             }
+
             else
             {
                 return false;
@@ -146,13 +125,12 @@ namespace BankomatApplikation
         }
 
 
-        //För att neräkna hur många sedlar och mynt användaren vill sätta in: 
 
-        int[] change = { 1000, 500, 200, 100, 50, 20, 10, 5, 1 };
-        int count; 
         List<Int16> list = new List<Int16>(9);
         public void DepositCash()
         {
+            int sum = 0;
+            int count = 0;
             for (int i = 0; i < change.Length; i++)
             {
                 Console.WriteLine($"Hur många av {change[i]} vill du sätta in? ");
@@ -170,6 +148,29 @@ namespace BankomatApplikation
             }
             holdings += sum;
             Console.WriteLine($"Ditt nya saldo är {holdings}");
+        }
+
+
+        public void ChangePinCode()
+        {
+            int new_pincode = 0;
+            bool changePin = false;
+            while (!changePin)
+            {
+            Console.Write("Knappa in din nya pinkod: ");
+                try
+                {
+                    new_pincode = Convert.ToInt16(Console.ReadLine());
+                    pinCode = new_pincode;
+                    Console.WriteLine("*** Din pinkod har nu ändrats ***\n\n");
+                    break;
+                }
+                catch
+                {
+                    Console.WriteLine("Felmeddelande! Vänligen knappa in en fyrsiffrig pinkod: ");
+                    break;
+                }
+            }
         }
     }
 }

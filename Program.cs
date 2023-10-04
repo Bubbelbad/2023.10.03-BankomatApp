@@ -47,13 +47,12 @@ namespace BankomatApplikation
             Account e = new Account("Edward Snowden", "Myntgatan 344", 4338);
             accounts.Add(e);
 
-
-            //Skapar och lägger till nya konton rakt in i listan! Tex: 
+            //Skapar och lägger till nya konton rakt in i listan. Tex: 
             accounts.Add(new Account("Kalle Snöblom", "Marklandsgatan 58", 3500, 6868));
-
 
             //För att räkna om alla konton kom med i listan: 
             Console.WriteLine(accounts.Count);
+
 
 
             //För att välja om en vill starta eller avsluta: 
@@ -166,13 +165,11 @@ namespace BankomatApplikation
                 }
 
             }
-
-
-
             Console.WriteLine("**** Pinkod Accepterad ***\n\n");
-           
             Console.WriteLine($"\n*** {accounts[x].Name}s konto. Saldo {accounts[x].holdings}:- SEK. ***\n");
            
+
+
             //Här väljer vi vilken funktion vi ska kalla på: 
             bool this_loop = true;
             int new_pincode = 0;
@@ -187,48 +184,33 @@ namespace BankomatApplikation
 
            
                 int code_input2 = 0;
-                code_input2 = Convert.ToInt16(Console.ReadLine());
-                Console.WriteLine("\n");
+                try
+                {
+                    code_input2 = Convert.ToInt16(Console.ReadLine());
+                    Console.WriteLine("\n");
+                }
+                catch
+                {
+                    Console.WriteLine("\n*** Felmeddelande! ***\nVänligen skriv in en siffra mellan 1- 4:\n");
+                }
            
                 switch (code_input2)
                 {
-                    case 1:
-                        Console.Write("Hur mycket pengar vill du ta ut? ");
-                        try
-                        {
-                            with_or_depos = Convert.ToInt32(Console.ReadLine());
-                            accounts[x].WithdrawCash(with_or_depos);  //Här kallar jag på funktionen WithdrawCash()
-                            break;
-                        }
-                        catch 
-                        {
-                            Console.WriteLine("Felmeddelande! Vänligen knappa in hur mycket pengar du vill ta ut.");
-                            break;
-                        }
+                    case 1: 
+                        accounts[x].WithdrawCash();
+                        break;
+
                     case 2:
-                            accounts[x].DepositCash(); //Här kallar jag på funktionen DepositCash()
-                            break;
+                        accounts[x].DepositCash();
+                        break;
 
                     case 3:
-                        Console.Write("Knappa in din nya pinkod: ");
-                        try
-                        {
-                            new_pincode = Convert.ToInt16(Console.ReadLine());
-                            accounts[x].PinCode = new_pincode;
-                            Console.WriteLine("*** Din pinkod har nu ändrats ***\n\n");
-                            break;
-                        }
-                        catch
-                        {
-                            Console.WriteLine("Felmeddelande! Vänligen knappa in en fyrsiffrig pinkod: ");
-                        }
-
+                        accounts[x].ChangePinCode();
                         break;
                     case 4:
                         System.Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("Vänligen välj en siffra mellan 1 - 4");
                         break;
            
                 }        
