@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,6 +68,39 @@ namespace BankomatApplikation
 
 
         //Funktioner: 
+        public static void StartProgram()
+        {
+            Console.WriteLine("*** Välkommen till bankomaten! *** \n \n" +
+
+                              "Sätt in ditt kort    [1] \n" +
+                              "Avsluta              [2]\n");
+
+            bool start = false;
+            int card_input = 0;
+            while (!start)
+            {
+                try
+                {
+                    card_input = Convert.ToInt16(Console.ReadLine());
+                    if (card_input == 1)
+                    {
+                        start = true;
+                    }
+                    else if (card_input == 2)
+                    {
+                        System.Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Vänligen välj alternativ [1] eller [2]:");
+                    }
+                }
+                catch
+                {
+                    Console.Write("Vänligen välj alternativ [1] eller [2] med siffror: ");
+                }
+            }
+        }
         public bool WithdrawCash()
         {
             int withdraw_sum = 0;
@@ -87,6 +121,7 @@ namespace BankomatApplikation
             
             if (withdraw_sum <= holdings)
             {
+                Console.Clear();
                 for (int i = 0; i < change.Length; i++)
                 {
                     while (change[i] <= sum)
@@ -147,7 +182,8 @@ namespace BankomatApplikation
                 }
             }
             holdings += sum;
-            Console.WriteLine($"Ditt nya saldo är {holdings}");
+            Console.Clear();
+            Console.WriteLine($"Ditt nya saldo är {holdings} SEK.\n");
         }
 
 
@@ -162,6 +198,7 @@ namespace BankomatApplikation
                 {
                     new_pincode = Convert.ToInt16(Console.ReadLine());
                     pinCode = new_pincode;
+                    Console.Clear();
                     Console.WriteLine("*** Din pinkod har nu ändrats ***\n\n");
                     break;
                 }

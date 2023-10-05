@@ -43,64 +43,35 @@ namespace BankomatApplikation
             d.PinCode = 3344;
             accounts.Add(d);
 
+
             //Constructor, där en kan mata in tre argument och holdings blir 0 av default:
-            Account e = new Account("Edward Snowden", "Myntgatan 344", 4338);
+            Account e = new Account("Edward", "Myntgatan 344", 4338);
             accounts.Add(e);
 
             //Skapar och lägger till nya konton rakt in i listan. Tex: 
-            accounts.Add(new Account("Kalle Snöblom", "Marklandsgatan 58", 3500, 6868));
-
-            //För att räkna om alla konton kom med i listan: 
-            Console.WriteLine(accounts.Count);
+            accounts.Add(new Account("Kalle", "Marklandsgatan 58", 3500, 6868));
 
 
 
-            //För att välja om en vill starta eller avsluta: 
-            bool start = false;
-            int card_input = 0;
-            Console.WriteLine("*** Välkommen till bankomaten! *** \n \n" +
 
-                              "Sätt in ditt kort    [1] \n" +
-                              "Avsluta              [2]\n");
 
-            while (!start)
-            {
-                try
-                {
-                    card_input = Convert.ToInt16(Console.ReadLine());
-                    if (card_input == 1)
-                    {
-                        start = true;
-                    }
-                    else if (card_input == 2)
-                    {
-                        System.Environment.Exit(0);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Vänligen välj alternativ [1] eller [2]:");
-                    }
-                }
-                catch
-                {
-                    Console.Write("Vänligen välj alternativ [1] eller [2] med siffror: ");
-                }
-            }
 
+            //Startar programmet. En static void funktion! YES..
+            Account.StartProgram();
 
 
             //För att välja vilket konto man loggar in i. Jag sparar index i variabel x för framtida användning. 
-            //(((Denna funktion behäver en failsafe ifall man skrivfer in fel namn)))
-            Console.WriteLine("\n");
+            //---(((Denna funktion behöver en failsafe ifall man skrivfer in fel namn)))---
 
             string account_name = "";
             int x = -2;
             bool account_choice = false;
 
+            Console.Clear();
             Console.Write("*** Vilket konto vill du använda? *** \n\n");
             while (!account_choice)
             {
-                Console.WriteLine("Skriv in ditt namn: ");
+                Console.Write("Skriv in ditt namn: ");
                 account_name = Console.ReadLine();
                 for (int i = 0; i < accounts.Count; i++)
                 {
@@ -108,6 +79,7 @@ namespace BankomatApplikation
                     {
                         x = i;
                         account_choice = true;
+
                     }
                 }
             }
@@ -122,7 +94,7 @@ namespace BankomatApplikation
             while (!login_status)
             {
                 Console.Write("\nKnappa in din kod: ");
-
+          
                 try
                 {
                     code_input = Convert.ToInt32(Console.ReadLine());
@@ -159,14 +131,15 @@ namespace BankomatApplikation
                                 Console.WriteLine("Försök igen med siffror...");
                             }
                         }
-
+          
                     }
-
+          
                 }
-
+          
             }
-            Console.WriteLine("**** Pinkod Accepterad ***\n\n");
-            Console.WriteLine($"\n*** {accounts[x].Name}s konto. Saldo {accounts[x].holdings}:- SEK. ***\n");
+            Console.Clear();
+            Console.WriteLine("**** Pinkod Accepterad ***\n");
+            Console.WriteLine($"{accounts[x].Name}s konto. Saldo: {accounts[x].holdings} SEK.\n");
            
 
 
@@ -188,6 +161,7 @@ namespace BankomatApplikation
                 {
                     code_input2 = Convert.ToInt16(Console.ReadLine());
                     Console.WriteLine("\n");
+                    Console.Clear();
                 }
                 catch
                 {
