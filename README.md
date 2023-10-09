@@ -1,4 +1,4 @@
-# KonsolAppInl-mningBank
+# 2023.10.03 - BankomatApp
  
 Mitt första skolprojekt - en enkel applikation för att simulera en bankomat där en ska kunna ta ut eller sätta in pengar.
 
